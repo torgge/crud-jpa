@@ -15,7 +15,14 @@ public class ConsultaCliente {
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("conexao-oracle");
         EntityManager em = emf.createEntityManager();
         List<Cliente> clientes = em.createQuery("from Cliente where sexo = 'M'",Cliente.class).getResultList();
-        clientes.forEach(cliente -> System.out.println(cliente.getNome()));
+        clientes.forEach(cliente -> {
+            System.out.println("-------------------------------------------");
+            System.out.println(cliente.getCodigo());
+            System.out.println(cliente.getNome());
+            System.out.println(cliente.getSexo());
+            System.out.println(cliente.getIdade());
+            System.out.println(cliente.getProfissao());
+        });
 
         em.close();
     }
